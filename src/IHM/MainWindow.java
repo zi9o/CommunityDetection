@@ -157,18 +157,9 @@ public class MainWindow extends javax.swing.JFrame {
         DoubleMatrix matrix = new DoubleMatrix(Matrice.getArray());
 
         ComplexDoubleMatrix eigenvalues = Eigen.eigenvalues(matrix);
-//        for (ComplexDouble eigenvalue : eigenvalues.toArray()) {
-//            System.out.print("|"+String.format("%.2f ", eigenvalue.abs()));
-//            System.out.println("");
-//        }
-//        
-//        System.out.println("eigenvalues : "+eigenvalues);
         List<Double> principalEigenvector = getPrincipalEigenvector(matrix);
-//        System.out.println("principalEigenvector = " + principalEigenvector);
-//        System.out.println("");
 
         List<Double> NormalisedEigenVectors=normalised(principalEigenvector);
-//        System.out.println("normalisedPrincipalEigenvector = " + NormalisedEigenVectors);
         
         Double[] a=new Double[NormalisedEigenVectors.size()];
         IndexMaxPQ<Double> pq=new IndexMaxPQ<Double>(a.length);
@@ -177,10 +168,6 @@ public class MainWindow extends javax.swing.JFrame {
             a[i]=NormalisedEigenVectors.get(i);
             pq.insert(i, a[i]);
         }
-//        for (int i :pq) 
-//        {
-//            System.out.println(i+" : "+a[i]);
-//        }
         return pq;
     }
 
@@ -238,16 +225,11 @@ public class MainWindow extends javax.swing.JFrame {
         {
             List<Integer> temp=new ArrayList<>();
             int l=pq.maxIndex();
-//            System.out.println("leader "+l);
             Vector<Integer> voisin=FirstOrderNodes(G, l);
             for (List<Integer> Result1 : Result) 
             {
                 voisin.removeAll(Result1);
             }
-//            for (Integer voisin1 : voisin)
-//            {
-//                System.out.println("voisin "+voisin1);
-//            }
             temp.add(l);
             temp.addAll(voisin);
             pq.delete(l);
@@ -440,7 +422,6 @@ public class MainWindow extends javax.swing.JFrame {
         
         if(VerifierMatrice(StoreMatrice(txtMatrice.getText()),data)==true)
         {
-//            CalculeCentralité();
             LabelValiditéMatrice.setText("Matrice valid !");
             LabelValiditéMatrice.setForeground(Color.BLUE);
             LabelValiditéMatrice.setVisible(true);
@@ -453,11 +434,6 @@ public class MainWindow extends javax.swing.JFrame {
             LabelValiditéMatrice.setForeground(Color.red);
             LabelValiditéMatrice.setVisible(true);
         }
-        //System.out.println(G);
-        
-//        ArrayList<List<Integer>> Leader_Voisins_List = Leader_Voisins_List(CalculeCentralité());
-//        GenerateCommunauté(Leader_Voisins_List);
-        
     }//GEN-LAST:event_ButtonVerifierMatriceActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
